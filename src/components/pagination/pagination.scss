@@ -1,0 +1,25 @@
+@import "../../App.scss";
+
+.pagination {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  &-select {
+    height: 20px;
+  }
+  > button,
+  select {
+    background-color: #fff;
+    margin: 5px;
+    height: 40px;
+    border: none;
+    @include pixel-borders(
+      $corner-size: 2,
+      $border-size: 4px,
+      $border-color: #000
+    );
+  }
+}

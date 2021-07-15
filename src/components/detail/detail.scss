@@ -1,0 +1,142 @@
+@import "../../App.scss";
+
+.detail {
+  position: relative;
+  z-index: 99999999;
+  &-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: #000, $alpha: 0.3);
+    transition: all 0.3s;
+    visibility: visible;
+    &.hide {
+      visibility: hidden;
+      background-color: rgba($color: #000, $alpha: 0);
+      transition: all 0.3s;
+    }
+  }
+  &-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+    width: 100vw;
+    max-height: 90vh;
+    background-color: #fff;
+    transition: top 0.6s;
+    box-sizing: border-box;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include pixel-borders(
+      $corner-size: 2,
+      $border-size: 4px,
+      $border-color: #000
+    );
+    &.hide {
+      top: 200vh;
+    }
+    &-container {
+      &-header {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        &-img {
+          width: 100px;
+          height: 100px;
+          @include pixel-borders(
+            $corner-size: 2,
+            $border-size: 2px,
+            $border-color: #000
+          );
+          img {
+            width: 100px;
+            height: 100px;
+          }
+        }
+        &-detail {
+          padding: 5px 10px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+          &-owned {
+            font-size: 0.8em;
+            margin: 6px 0 0 0;
+            white-space: nowrap;
+          }
+          &-title {
+            text-transform: capitalize;
+            font-size: 20px;
+            margin: 0;
+          }
+          &-subtitle {
+            font-size: 10px;
+          }
+          &-types {
+            display: flex;
+            gap: 5px;
+            > p {
+              padding: 5px 20px;
+              color: #fff;
+              text-transform: uppercase;
+              font-size: 10px;
+              margin: 0;
+              @include pixel-borders(
+                $corner-size: 2,
+                $border-size: 2px,
+                $border-color: #000
+              );
+            }
+          }
+        }
+      }
+      &-body {
+        &-moves {
+          max-height: 35vh;
+          overflow-y: scroll;
+          background-color: #f6f6f6;
+          text-transform: capitalize;
+          padding: 20px;
+          box-sizing: border-box;
+          @include pixel-borders(
+            $corner-size: 1,
+            $border-size: 4px,
+            $border-color: #000
+          );
+        }
+      }
+      &-footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        button {
+          width: 100%;
+          margin-top: 20px;
+          flex: 1;
+          padding: 10px 20px;
+          color: #fff;
+          @include pixel-borders(
+            $corner-size: 2,
+            $border-size: 4px,
+            $border-color: #000
+          );
+          &.catch {
+            background-color: #24da4a;
+          }
+          &.close {
+            background-color: #c70039;
+          }
+        }
+      }
+    }
+  }
+}

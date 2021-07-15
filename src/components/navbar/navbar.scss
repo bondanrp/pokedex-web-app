@@ -1,0 +1,30 @@
+@import "../../App.scss";
+
+.navbar {
+  position: fixed;
+  z-index: 99999998;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 4px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  a {
+    color: black;
+    padding: 5px 10px;
+    @include pixel-borders(
+      $corner-size: 2,
+      $border-size: 4px,
+      $border-color: #000,
+      $border-inset-color: gray
+    );
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

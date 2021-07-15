@@ -1,0 +1,38 @@
+@import "../../App.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 170px;
+  padding: 20px;
+  box-sizing: border-box;
+  @include pixel-borders(
+    $corner-size: 2,
+    $border-size: 4px,
+    $border-color: #000
+  );
+  &:hover {
+    transition: transform 0.2s;
+    transform: translateY(-3px);
+    cursor: pointer;
+  }
+  &:active {
+    transform: translateY(0);
+    z-index: 1;
+  }
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+  }
+}

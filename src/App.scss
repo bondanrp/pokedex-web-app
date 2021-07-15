@@ -1,0 +1,58 @@
+@import "node_modules/pixel-borders/src/styles/pixel-borders.scss";
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+body {
+  background-color: #f6f6f6;
+  position: relative;
+  font-family: "Press Start 2P", cursive;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+  }
+  button,
+  select {
+    &:hover {
+      cursor: pointer;
+    }
+    font-family: "Press Start 2P", cursive;
+  }
+  input {
+    font-family: "Press Start 2P", cursive;
+  }
+  .error-message {
+    background-color: #feeaef;
+    color: #f04f57;
+    line-height: 1.1em;
+    padding: 5px;
+    font-size: 0.8em;
+    @include pixel-borders(
+      $corner-size: 1,
+      $border-size: 2px,
+      $border-color: #f04f57
+    );
+  }
+  .confirm-button {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    button {
+      color: #fff;
+      padding: 5px 10px;
+      @include pixel-borders(
+        $corner-size: 1,
+        $border-size: 2px,
+        $border-color: #000
+      );
+      &:nth-of-type(1) {
+        background-color: #c70039;
+      }
+      &:last-of-type {
+        background-color: #24da4a;
+      }
+    }
+  }
+}
