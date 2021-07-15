@@ -4,7 +4,7 @@ import { ApolloProvider } from "@apollo/client";
 import { Home } from "./views/home";
 import { useEffect } from "react";
 import { getMyPokemon } from "./helper/localstorage";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, HashRouter as Router, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import MyPokemon from "./views/my-pokemon";
 
