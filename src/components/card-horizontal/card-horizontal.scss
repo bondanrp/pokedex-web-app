@@ -6,16 +6,23 @@
     $border-size: 4px,
     $border-color: #000
   );
+  img {
+    width: 5em;
+    padding: 10px;
+  }
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   align-items: center;
-  justify-content: space-between;
   padding: 0 20px;
   max-width: 800px;
   > div {
     display: flex;
     align-items: center;
     p {
+      &:nth-of-type(1) {
+        font-size: 14px;
+      }
       margin: 0;
     }
   }
@@ -23,6 +30,7 @@
     padding: 5px;
     color: #fff;
     background-color: #c70039;
+    font-size: 12px;
     @include pixel-borders(
       $corner-size: 1,
       $border-size: 2px,

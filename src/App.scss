@@ -1,7 +1,9 @@
 @import "node_modules/pixel-borders/src/styles/pixel-borders.scss";
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 body {
-  background-color: #f6f6f6;
+  background-color: hsl(0, 0%, 96%);
+  width: 100vw;
+  overflow-x: hidden;
   position: relative;
   font-family: "Press Start 2P", cursive;
   h1,

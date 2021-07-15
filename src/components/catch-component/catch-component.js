@@ -86,6 +86,7 @@ export default function CatchComponent({ pokemon, catching, setCatching }) {
                 What would you like to name it?
               </p>
               <input
+                maxLength="12"
                 value={nickname}
                 onChange={(e) => {
                   setnickname(e.target.value);
