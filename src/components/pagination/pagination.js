@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./pagination.scss";
 
 export default function Pagination({ count, setPage, page }) {
@@ -6,18 +7,27 @@ export default function Pagination({ count, setPage, page }) {
   useEffect(() => {
     const countPages = [];
     for (let i = 0; i < count / 30; i++) {
-      countPages.push(i);
+      countPages.push(i + 1);
     }
     setpages(countPages);
   }, [count]);
 
   return (
     <div className="pagination">
-      <button disabled={page === 0} onClick={() => setPage(0)}>{`<<`}</button>
-      <button
-        disabled={page === 0}
-        onClick={() => setPage(page - 1)}
-      >{`<`}</button>
+      <div>
+        <Link
+          to={`?page=${1}`}
+          className={page === 1 ? `disabled-link` : ""}
+          // onClick={() => setPage(0)}
+        >{`<<`}</Link>
+      </div>
+      <div>
+        <Link
+          to={`?page=${page - 1}`}
+          className={page === 1 ? `disabled-link` : ""}
+          // onClick={() => setPage(page - 1)}
+        >{`<`}</Link>
+      </div>
       <select
         value={page}
         onChange={(e) => setPage(e.target.value)}
@@ -25,18 +35,24 @@ export default function Pagination({ count, setPage, page }) {
       >
         {pages.map((val) => (
           <option value={val} key={val}>
-            Page :{val + 1}
+            Page :{val}
           </option>
         ))}
       </select>
-      <button
-        disabled={page === pages[pages.length - 1]}
-        onClick={() => setPage(page + 1)}
-      >{`>`}</button>
-      <button
-        disabled={page === pages[pages.length - 1]}
-        onClick={() => setPage(pages[pages.length - 1])}
-      >{`>>`}</button>
+      <div>
+        <Link
+          to={`?page=${page + 1}`}
+          className={page === pages.length ? `disabled-link` : ""}
+          // onClick={() => setPage(page + 1)}
+        >{`>`}</Link>
+      </div>
+      <div>
+        <Link
+          to={`?page=${pages.length}`}
+          className={page === pages.length ? `disabled-link` : ""}
+          // onClick={() => setPage(pages[pages.length - 1])}
+        >{`>>`}</Link>
+      </div>
     </div>
   );
 }

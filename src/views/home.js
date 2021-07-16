@@ -1,6 +1,8 @@
 import { useQuery } from "@apollo/client";
 import { css } from "@emotion/css";
+import qs from "qs";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { GET_POKEMONS } from "../api/api";
 import Card from "../components/card/card";
 import CatchComponent from "../components/catch-component/catch-component";
@@ -11,7 +13,7 @@ import { getMyPokemon } from "../helper/localstorage";
 
 export function Home() {
   const [pokemons, setpokemons] = useState({});
-  const [page, setpage] = useState(0);
+  const [page, setpage] = useState(1);
   const [count, setcount] = useState(0);
   const [pokemon, setpokemon] = useState("");
   const [myPokemon, setmyPokemon] = useState([]);
@@ -24,17 +26,23 @@ export function Home() {
     },
     variables: {
       limit: 30,
-      offset: page * 30,
+      offset: (page - 1) * 30,
     },
   });
+  const location = useLocation();
 
+  useEffect(() => {
+    console.log(page);
+  }, [page]);
   useEffect(() => {
     setmyPokemon(getMyPokemon());
   }, [catching]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [page]);
+    const queryString = qs.parse(location.search, { ignoreQueryPrefix: true });
+    const n = Number(queryString.page);
+    setpage(n || 1);
+  }, [location]);
 
   const countOwned = (name) => {
     if (myPokemon && myPokemon.length > 0) {

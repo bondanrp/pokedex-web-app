@@ -19,7 +19,7 @@ export default function CatchComponent({ pokemon, catching, setCatching }) {
     }
     let loader = setTimeout(() => {
       setloading(false);
-    }, 1000);
+    }, 500);
     return () => {
       clearTimeout(loader);
     };

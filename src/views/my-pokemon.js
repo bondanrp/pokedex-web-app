@@ -74,7 +74,7 @@ export default function MyPokemon() {
           })
         ) : (
           <div
-            class={css`
+            className={css`
               padding-top: 50px;
               display: flex;
               flex-direction: column;
