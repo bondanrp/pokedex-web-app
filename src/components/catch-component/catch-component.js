@@ -3,6 +3,7 @@ import { addPokemon } from "../../helper/localstorage";
 import { types } from "../../helper/types";
 import Loading from "../loading/loading";
 import "./catch-component.scss";
+
 export default function CatchComponent({ pokemon, catching, setCatching }) {
   const [loading, setloading] = useState(true);
   const [success, setsuccess] = useState(false);
@@ -80,6 +81,7 @@ export default function CatchComponent({ pokemon, catching, setCatching }) {
                     })`,
                   }}
                   src={pokemon.sprites && pokemon.sprites.front_default}
+                  alt="missing"
                 />
               </div>
               <p className="catch-card-subtitle">
@@ -126,6 +128,7 @@ export default function CatchComponent({ pokemon, catching, setCatching }) {
                     })`,
                   }}
                   src={pokemon.sprites && pokemon.sprites.front_default}
+                  alt="missing"
                 />
               </div>
               <div className="detail-card-container-footer">

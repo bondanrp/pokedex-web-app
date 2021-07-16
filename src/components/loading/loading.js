@@ -5,7 +5,7 @@ import "./loading.scss";
 export default function Loading({ alt }) {
   return (
     <div className="loading">
-      <img src={pokeball} />
+      <img src={pokeball} alt="missing" />
       <p>{alt ? alt : "Loading..."}</p>
     </div>
   );

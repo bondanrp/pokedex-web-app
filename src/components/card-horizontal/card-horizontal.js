@@ -6,7 +6,7 @@ export default function CardHorizontal({ data, openConfirmation }) {
   return (
     <div className="card-horizontal">
       <div>
-        <img src={data.image} />
+        <img src={data.image} alt="missing" />
         <div>
           <p>{data.nickname}</p>
           <p

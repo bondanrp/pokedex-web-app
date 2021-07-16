@@ -5,7 +5,7 @@ import { css } from "@emotion/css";
 export default function Card({ data, setPokemon, owned }) {
   return (
     <div onClick={() => setPokemon(data)} className="card">
-      <img src={data.image} />
+      <img src={data.image} alt="missing" />
       <p>{data.name.replace(/-/g, " ")}</p>
       <p
         className={css`

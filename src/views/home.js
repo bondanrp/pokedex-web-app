@@ -6,7 +6,6 @@ import Card from "../components/card/card";
 import CatchComponent from "../components/catch-component/catch-component";
 import Detail from "../components/detail/detail";
 import Loading from "../components/loading/loading";
-import Navbar from "../components/navbar/navbar";
 import Pagination from "../components/pagination/pagination";
 import { getMyPokemon } from "../helper/localstorage";
 
@@ -18,7 +17,7 @@ export function Home() {
   const [myPokemon, setmyPokemon] = useState([]);
   const [lastPokemon, setlastPokemon] = useState({});
   const [catching, setcatching] = useState(false);
-  const { loading, error, data } = useQuery(GET_POKEMONS, {
+  const { loading } = useQuery(GET_POKEMONS, {
     onCompleted: (data) => {
       setpokemons(data.pokemons);
       setcount(data.pokemons.count);
@@ -38,7 +37,11 @@ export function Home() {
   }, [page]);
 
   const countOwned = (name) => {
-    return myPokemon.filter((obj) => obj.pokemon === name).length;
+    if (myPokemon && myPokemon.length > 0) {
+      return myPokemon.filter((obj) => obj.pokemon === name).length;
+    } else {
+      return 0;
+    }
   };
 
   const handleCatch = () => {
@@ -75,10 +78,16 @@ export function Home() {
         <div
           className={css`
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 170px));
             grid-gap: 16px;
             justify-content: center;
             padding-top: 80px;
+            grid-template-columns: repeat(2, 170px);
+            @media only screen and (min-width: 1100px) {
+              grid-template-columns: repeat(6, 170px);
+            }
+            @media only screen and (min-width: 600px) and (max-width: 1100px) {
+              grid-template-columns: repeat(3, 170px);
+            }
           `}
         >
           {pokemons &&

@@ -13,7 +13,7 @@ export default function Detail({
   owned,
 }) {
   const [item, setitem] = useState({});
-  const { loading, error, data } = useQuery(GET_POKEMON, {
+  const { loading } = useQuery(GET_POKEMON, {
     onCompleted: (data) => {
       setitem(data.pokemon);
       setLastPokemon(data.pokemon);
@@ -49,6 +49,7 @@ export default function Detail({
                       })`,
                     }}
                     src={item.sprites && item.sprites.front_default}
+                    alt="missing"
                   />
                 </div>
                 <p className="detail-card-container-header-detail-owned">

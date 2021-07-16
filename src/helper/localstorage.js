@@ -2,7 +2,7 @@ export function addPokemon(item) {
   var pokemon = getMyPokemon();
   var found = false;
   for (var i = 0; i < pokemon.length; i++) {
-    if (pokemon[i].nickname.toLowerCase() == item.nickname.toLowerCase()) {
+    if (pokemon[i].nickname.toLowerCase() === item.nickname.toLowerCase()) {
       found = true;
       break;
     }
