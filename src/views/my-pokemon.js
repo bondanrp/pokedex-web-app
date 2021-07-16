@@ -2,6 +2,8 @@ import { css } from "@emotion/css";
 import React, { useEffect, useState } from "react";
 import CardHorizontal from "../components/card-horizontal/card-horizontal";
 import { getMyPokemon, removePokemon } from "../helper/localstorage";
+import missing from "../assets/missing.png";
+import { Link } from "react-router-dom";
 
 export default function MyPokemon() {
   const [confirm, setconfirm] = useState(false);
@@ -60,15 +62,42 @@ export default function MyPokemon() {
           padding-top: 80px;
         `}
       >
-        {myPokemon.map((val, idx) => {
-          return (
-            <CardHorizontal
-              key={val.nickname}
-              data={val}
-              openConfirmation={openConfirmation}
-            />
-          );
-        })}
+        {myPokemon && myPokemon.length > 0 ? (
+          myPokemon.map((val, idx) => {
+            return (
+              <CardHorizontal
+                key={val.nickname}
+                data={val}
+                openConfirmation={openConfirmation}
+              />
+            );
+          })
+        ) : (
+          <div
+            class={css`
+              padding-top: 50px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              width: 300px;
+              img {
+                width: 75px;
+              }
+              p {
+                text-align: left;
+                width: 100%;
+                margin-bottom: 0px;
+              }
+            `}
+          >
+            <img src={missing} alt="missing" />
+            <p>Uh Oh</p>
+            <p>It seems that you haven't caught any pokemon yet</p>
+            <p>
+              Go <Link to="/">here</Link> to catch some
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
