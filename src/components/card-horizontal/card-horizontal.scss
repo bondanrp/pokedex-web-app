@@ -1,6 +1,7 @@
 @import "../../App.scss";
 
 .card-horizontal {
+  background-color: #fff;
   margin: 0 4px;
   @include pixel-borders(
     $corner-size: 2,
