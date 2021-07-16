@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./pagination.scss";
 
-export default function Pagination({ count, setPage, page }) {
+export default function Pagination({ count, page }) {
+  let history = useHistory();
   const [pages, setpages] = useState([]);
   useEffect(() => {
     const countPages = [];
@@ -12,25 +13,27 @@ export default function Pagination({ count, setPage, page }) {
     setpages(countPages);
   }, [count]);
 
+  const handleChange = (input) => {
+    history.push(`?page=${input}`);
+  };
+
   return (
     <div className="pagination">
       <div>
         <Link
           to={`?page=${1}`}
           className={page === 1 ? `disabled-link` : ""}
-          // onClick={() => setPage(0)}
         >{`<<`}</Link>
       </div>
       <div>
         <Link
           to={`?page=${page - 1}`}
           className={page === 1 ? `disabled-link` : ""}
-          // onClick={() => setPage(page - 1)}
         >{`<`}</Link>
       </div>
       <select
         value={page}
-        onChange={(e) => setPage(e.target.value)}
+        onChange={(e) => handleChange(e.target.value)}
         className="pagination-select"
       >
         {pages.map((val) => (
@@ -43,14 +46,12 @@ export default function Pagination({ count, setPage, page }) {
         <Link
           to={`?page=${page + 1}`}
           className={page === pages.length ? `disabled-link` : ""}
-          // onClick={() => setPage(page + 1)}
         >{`>`}</Link>
       </div>
       <div>
         <Link
           to={`?page=${pages.length}`}
           className={page === pages.length ? `disabled-link` : ""}
-          // onClick={() => setPage(pages[pages.length - 1])}
         >{`>>`}</Link>
       </div>
     </div>
